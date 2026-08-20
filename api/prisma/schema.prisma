@@ -1,0 +1,94 @@
+// Prisma Schema for 大喜利 (Ogiri) Web Service
+// Database: Cloudflare D1 (SQLite)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+/// ユーザーアカウント
+model User {
+  id            String    @id /// ULID
+  username      String    @unique /// ログインID（英数字+アンダースコア、3〜32文字）
+  display_name  String    /// 表示名（1〜50文字）
+  password_hash String    /// PBKDF2 ハッシュ
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+  deleted_at    DateTime? /// 論理削除日時
+
+  topics   Topic[]
+  answers  Answer[]
+  ratings  Rating[]
+  comments Comment[]
+
+  @@index([username])
+}
+
+/// お題
+model Topic {
+  id         String    @id /// ULID
+  body       String    /// お題本文（1〜500文字）
+  user_id    String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime? /// 論理削除日時
+
+  user    User     @relation(fields: [user_id], references: [id])
+  answers Answer[]
+
+  @@index([user_id])
+  @@index([created_at])
+}
+
+/// 回答
+model Answer {
+  id         String    @id /// ULID
+  body       String    /// 回答本文（1〜500文字）
+  topic_id   String
+  user_id    String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime? /// 論理削除日時
+
+  topic    Topic     @relation(fields: [topic_id], references: [id])
+  user     User      @relation(fields: [user_id], references: [id])
+  ratings  Rating[]
+  comments Comment[]
+
+  @@index([topic_id])
+  @@index([user_id])
+}
+
+/// 評価（1人1回答につき1回）
+model Rating {
+  id         String   @id /// ULID
+  score      Int      /// 0〜10 の整数
+  answer_id  String
+  user_id    String
+  created_at DateTime @default(now())
+
+  answer Answer @relation(fields: [answer_id], references: [id])
+  user   User   @relation(fields: [user_id], references: [id])
+
+  @@unique([answer_id, user_id]) /// 1人1回答1評価を保証
+  @@index([answer_id])
+}
+
+/// コメント
+model Comment {
+  id         String    @id /// ULID
+  body       String    /// コメント本文（1〜500文字）
+  answer_id  String
+  user_id    String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime? /// 論理削除日時
+
+  answer Answer @relation(fields: [answer_id], references: [id])
+  user   User   @relation(fields: [user_id], references: [id])
+
+  @@index([answer_id])
+}

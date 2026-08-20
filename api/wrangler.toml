@@ -1,0 +1,21 @@
+name = "ogiri-api"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+
+# 静的アセット配信（React SPA）
+# 本番デプロイ時は web/dist の内容を同一 Worker から配信する
+[assets]
+directory = "../web/dist"
+not_found_handling = "single-page-application"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ogiri-db"
+database_id = "local"
+migrations_dir = "prisma/migrations"
+migrations_pattern = "prisma/migrations/*/migration.sql"
+
+[vars]
+# ローカル開発時のみ使用（本番では同一オリジンのため CORS 不要）
+ALLOWED_ORIGIN = ""

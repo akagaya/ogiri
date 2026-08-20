@@ -1,0 +1,92 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+
+  .loading {
+    text-align: center;
+    padding: 3rem;
+  }
+
+  .error {
+    color: #D32F2F;
+    padding: 2rem;
+  }
+
+  .profileCard {
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 3rem 2rem;
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0 auto 1rem auto;
+    }
+
+    .name {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.75rem;
+    }
+
+    .username {
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .joinDate {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+    }
+  }
+
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 1.5rem;
+
+    .tab {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      border-bottom: 3px solid transparent;
+      transition: var(--transition-normal);
+
+      &.active {
+        font-weight: 700;
+        color: var(--color-primary);
+        border-bottom: 3px solid var(--color-primary);
+      }
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+
+  .listContainer {
+    .empty {
+      padding: 2rem;
+      text-align: center;
+      color: var(--color-text-secondary);
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+}

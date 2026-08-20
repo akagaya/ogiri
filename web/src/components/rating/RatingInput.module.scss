@@ -1,0 +1,60 @@
+.container {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #FFF3E0;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h4 {
+      margin: 0;
+    }
+
+    .savedScore {
+      font-size: 0.9rem;
+      color: var(--color-secondary);
+      font-weight: 500;
+      background: #FBE9E7;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+  }
+
+  .error {
+    color: #D32F2F;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .success {
+    color: #2E7D32;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .inputGroup {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .scoreDisplay {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-secondary);
+      min-width: 40px;
+    }
+
+    .rangeInput {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .submitBtn {
+      padding: 0.5rem 1rem;
+    }
+  }
+}

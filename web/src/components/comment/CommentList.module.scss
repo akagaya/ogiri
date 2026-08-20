@@ -1,0 +1,105 @@
+.container {
+  margin-top: 2rem;
+
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #EEEEEE;
+  }
+
+  .error {
+    color: #D32F2F;
+    margin-bottom: 1rem;
+  }
+
+  .loading {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .empty {
+      color: var(--color-text-secondary);
+      font-style: italic;
+    }
+
+    .commentItem {
+      padding: 1rem;
+      background: var(--color-surface);
+      border-radius: 8px;
+      border: 1px solid #EEEEEE;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+
+        .userLink {
+          font-weight: 500;
+          font-size: 0.9rem;
+          color: var(--color-primary);
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .date {
+          color: var(--color-text-secondary);
+          font-size: 0.85rem;
+        }
+      }
+
+      .body {
+        margin: 0 0 0.5rem 0;
+      }
+
+      .actions {
+        text-align: right;
+
+        .deleteBtn {
+          background: none;
+          border: none;
+          color: #D32F2F;
+          font-size: 0.85rem;
+          cursor: pointer;
+          padding: 0;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .formContainer {
+    margin-top: 2rem;
+    background: #FAFAFA;
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .submitBtn {
+        align-self: flex-end;
+      }
+    }
+
+    .loginPrompt {
+      color: var(--color-text-secondary);
+    }
+  }
+}

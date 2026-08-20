@@ -1,0 +1,21 @@
+FROM node:22-slim
+
+WORKDIR /app
+
+# npm install のためのファイルコピー
+COPY package*.json ./
+RUN npm install
+
+# Prisma スキーマをコピーして Client を生成
+COPY prisma ./prisma/
+COPY prisma.config.ts ./
+RUN npx prisma generate
+
+# ソースコードのコピー
+COPY . .
+
+# wrangler 用のポート
+EXPOSE 8787
+
+# wrangler dev の実行（外部からのアクセスを許可するため --ip 0.0.0.0 を指定）
+CMD ["npm", "run", "dev", "--", "--ip", "0.0.0.0"]

@@ -1,0 +1,41 @@
+.card {
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: pointer;
+
+  .contextBox {
+    padding: 0.75rem;
+    background: var(--color-bg-tertiary, #F5F5F5);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    border-left: 4px solid #E0E0E0;
+
+    .topicInfo {
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    .answerInfo {
+      font-style: italic;
+    }
+  }
+
+  .body {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--color-text-primary);
+    white-space: pre-wrap;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+  }
+}
