@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router';
 import { topicsApi } from '../api/topics';
 import { useAuth } from '../hooks/useAuth';
 import styles from './NewTopic.module.scss';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function NewTopic() {
+  useDocumentTitle('お題を出す');
   const [body, setBody] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

@@ -7,6 +7,7 @@ import type { Topic, Answer } from '../types';
 import { AnswerCard } from '../components/answer/AnswerCard';
 import { SortSelector } from '../components/common/SortSelector';
 import { ConfirmDialog } from '../components/common/ConfirmDialog';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import styles from './TopicDetail.module.scss';
 
 export function TopicDetail() {
@@ -22,6 +23,8 @@ export function TopicDetail() {
   const [submitLoading, setSubmitLoading] = useState(false);
   const [error, setError] = useState('');
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+
+  useDocumentTitle(topic?.body ?? 'お題詳細');
 
   const fetchTopicAndAnswers = async () => {
     if (!id) return;

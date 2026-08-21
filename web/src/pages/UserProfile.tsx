@@ -6,6 +6,7 @@ import { TopicCard } from '../components/topic/TopicCard';
 import { AnswerCard } from '../components/answer/AnswerCard';
 import { UserCommentCard } from '../components/comment/UserCommentCard';
 import { Pagination } from '../components/common/Pagination';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import styles from './UserProfile.module.scss';
 
 export function UserProfile() {
@@ -33,6 +34,8 @@ export function UserProfile() {
   const [error, setError] = useState('');
   
   const limit = 10;
+
+  useDocumentTitle(user?.display_name ? `${user.display_name}のプロフィール` : 'プロフィール');
 
   useEffect(() => {
     const fetchUser = async () => {

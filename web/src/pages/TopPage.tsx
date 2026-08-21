@@ -4,9 +4,11 @@ import type { Topic } from '../types';
 import { TopicCard } from '../components/topic/TopicCard';
 import { SortSelector } from '../components/common/SortSelector';
 import { Pagination } from '../components/common/Pagination';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import styles from './TopPage.module.scss';
 
 export function TopPage() {
+  useDocumentTitle('お題一覧');
   const [topics, setTopics] = useState<Topic[]>([]);
   const [sort, setSort] = useState<'latest' | 'popular'>('latest');
   const [page, setPage] = useState(1);

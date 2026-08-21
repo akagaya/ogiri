@@ -7,6 +7,7 @@ import type { Answer, Topic } from '../types';
 import { RatingInput } from '../components/rating/RatingInput';
 import { CommentList } from '../components/comment/CommentList';
 import { ConfirmDialog } from '../components/common/ConfirmDialog';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import styles from './AnswerDetail.module.scss';
 
 export function AnswerDetail() {
@@ -19,6 +20,8 @@ export function AnswerDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+
+  useDocumentTitle('回答詳細');
 
   const fetchData = async () => {
     if (!id) return;

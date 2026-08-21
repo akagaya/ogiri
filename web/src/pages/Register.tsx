@@ -3,8 +3,10 @@ import { useNavigate, Link } from 'react-router';
 import { useAuth } from '../hooks/useAuth';
 import { authApi } from '../api/auth';
 import styles from './Register.module.scss';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function Register() {
+  useDocumentTitle('新規登録');
   const [username, setUsername] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [password, setPassword] = useState('');

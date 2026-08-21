@@ -3,8 +3,10 @@ import { useNavigate, Link } from 'react-router';
 import { useAuth } from '../hooks/useAuth';
 import { authApi } from '../api/auth';
 import styles from './Login.module.scss';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function Login() {
+  useDocumentTitle('ログイン');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
